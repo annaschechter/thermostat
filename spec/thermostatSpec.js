@@ -28,19 +28,49 @@ describe('Thermostat', function() {
 			thermostat.decreaseTemperature();
 			expect(thermostat.temperature).toEqual(19)
 		});
+
+		it('minimum temperature is set to 10 degrees', function() {
+			expect(thermostat.minimumTemperature).toEqual(10);
+		});
+
+		it('cannot go below minimum temperature', function() {
+			thermostat.decreaseTemperatureBy(11)
+			expect(thermostat.temperature).toEqual(10);
+		});
+
+		it('if power saving is on the maximum temperature is 25 degrees', function() {
+			thermostat.increaseTemperatureBy(6);
+			expect(thermostat.temperature).toEqual(25);
+		})
+
+		it('if power saving is off maximum temperature is 32 degrees', function() {
+			thermostat.isPowerSaverOn = false;
+			thermostat.increaseTemperatureBy(20);
+			expect(thermostat.temperature).toEqual(32);
+		});
+
+		it('thermostat can be reset to a default temperature', function() {
+			thermostat.increaseTemperature(5);
+			thermostat.reset()
+			expect(thermostat.temperature).toEqual(20);
+		});
+
+
 	});
 
 	describe('custom options', function() {
 
 		it('can increase temperature by 12', function() {
-			thermostat.increaseTemperatureBy(12);
-			expect(thermostat.temperature).toEqual(32)
+			thermostat.increaseTemperatureBy(2);
+			expect(thermostat.temperature).toEqual(22)
 		});
 
 		it('can decrease temperature by 5', function() {
 			thermostat.decreaseTemperatureBy(5);
 			expect(thermostat.temperature).toEqual(15)
 		});
+
+
 
 	});
 
