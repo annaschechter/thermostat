@@ -30,3 +30,12 @@ Thermostat.prototype.decreaseTemperatureBy = function(degrees) {
 Thermostat.prototype.reset = function() {
 	return this.temperature = this.resetDefault;
 };
+
+Thermostat.prototype.turnOnPowerSaver = function() {
+	return this.isPowerSaverOn = true;
+};
+
+
+Thermostat.prototype.turnOffPowerSaver = function() {
+	return this.isPowerSaverOn = false;
+};

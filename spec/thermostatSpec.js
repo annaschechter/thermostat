@@ -60,6 +60,18 @@ describe('Thermostat', function() {
 		it('can decrease temperature by 5', function() {
 			expect(thermostat.decreaseTemperatureBy(5)).toEqual(15);
 		});
+
+		it('can turn on power saver', function() {
+			thermostat.turnOffPowerSaver();
+			thermostat.turnOnPowerSaver()
+			expect(thermostat.isPowerSaverOn).toBe(true);
+		});
+
+		it('can turn off power saver', function() {
+			thermostat.turnOffPowerSaver();
+			expect(thermostat.isPowerSaverOn).toBe(false);
+		});
+
 	});
 
 });

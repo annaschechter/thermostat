@@ -6,7 +6,8 @@ function ThermostatView(element) {
 	this.bindTo('#increase', this.thermostat, this.thermostat.increaseTemperature); 
 	this.bindTo('#decrease', this.thermostat, this.thermostat.decreaseTemperature);
 	this.bindTo('#reset', this.thermostat, this.thermostat.reset);
-	this.bindTo('#')
+	this.attachTo('#powersaveron', this.thermostat, this.thermostat.turnOnPowerSaver);
+	this.attachTo('#powersaveroff', this.thermostat, this.thermostat.turnOffPowerSaver);
 };
 
 ThermostatView.prototype.bindTo = function(selector, object, func) {
@@ -16,6 +17,12 @@ ThermostatView.prototype.bindTo = function(selector, object, func) {
 			if (parseInt($('#number').text()) < 18) $('body').css("background-color", "green");
 			else if(parseInt($('#number').text()) < 25) $('body').css("background-color", "yellow");
 			else $('body').css("background-color", "red");
+	});
+};
+
+ThermostatView.prototype.attachTo = function(selector, object, func) {
+	$(selector).on('click', function() {
+		func.call(object);
 	});
 };
 
