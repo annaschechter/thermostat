@@ -1,32 +1,26 @@
 
+function ThermostatView(element) {
+	this.el = $(element);
+	this.thermostat = new Thermostat;
+	this.el.text(this.thermostat.temperature);
+	this.bindTo('#increase', this.thermostat, this.thermostat.increaseTemperature); 
+	this.bindTo('#decrease', this.thermostat, this.thermostat.decreaseTemperature);
+	this.bindTo('#reset', this.thermostat, this.thermostat.reset);
+	this.bindTo('#')
+};
+
+ThermostatView.prototype.bindTo = function(selector, object, func) {
+	this.thermostat.isPowerSaverOn = false;
+	$(selector).on('click', function() {
+		$('#number').text(func.call(object)+"°");
+			if (parseInt($('#number').text()) < 18) $('body').css("background-color", "green");
+			else if(parseInt($('#number').text()) < 25) $('body').css("background-color", "yellow");
+			else $('body').css("background-color", "red");
+	});
+};
 
 $(document).ready(function() {
-
-var thermostat = new Thermostat;
-thermostat.isPowerSaverOn = false;
-
-$('#increase').on('click', function() {
-		thermostat.increaseTemperature();
-		$('#number').text(thermostat.temperature+"°")
-		if(thermostat.temperature < 18) $('body').css("background-color", "green");
-		else if(thermostat.temperature < 25) $('body').css("background-color", "rgb(227, 192, 44)");
-		else $('body').css("background-color", "red");
-	});
-
-$('#decrease').on('click', function() {
-		thermostat.decreaseTemperature();
-		$('#number').text(thermostat.temperature+"°")
-		if(thermostat.temperature < 18) $('body').css("background-color", "green");
-		else if(thermostat.temperature < 25) $('body').css("background-color", "rgb(227, 192, 44)");
-		else $('body').css("background-color", "red");
-	});
-$('#reset').on('click', function() {
-	thermostat.reset();
-	$('#number').text(thermostat.temperature+"°")
-})
-
-
-
+	new ThermostatView('#number');
 });
 
 
@@ -35,25 +29,6 @@ $('#reset').on('click', function() {
 
 
 
-
-
-
-// function ThermostatView(element) {
-// 	this.el = $(element);
-// 	this.thermostat = new Thermostat;
-// 	this.el.text(this.thermostat.temperature);
-// 	this.binTo('#increase', this.thermocat, this.thermostat.increaseTemperature);
-// };
-
-// Thermostat.prototype.bindTo = function(selector, object, func) {
-// 	$(selector).on('click', function() {
-// 		$('#number').text(func.call(object));
-// 	});
-// };
-
-// $(document).ready(function() {
-// 	new ThermostatView('#number');
-// })
 
 
 

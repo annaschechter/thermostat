@@ -8,24 +8,25 @@ function Thermostat() {
 };
 
 Thermostat.prototype.increaseTemperature = function() {
-	this.increaseTemperatureBy(1);
+	return this.increaseTemperatureBy(1);
 };
 
 Thermostat.prototype.increaseTemperatureBy = function(degrees) {
 	this.temperature += degrees;
 	if(this.isPowerSaverOn && this.temperature > this.maxTemperaturePowerSaver) this.temperature = this.maxTemperaturePowerSaver;
 	if(!this.isPowerSaverOn && this.temperature > this.maxTemperature) this.temperature = this.maxTemperature; 
+	return this.temperature;
 };
 
 Thermostat.prototype.decreaseTemperature = function() {
-	this.decreaseTemperatureBy(1);
+	return this.decreaseTemperatureBy(1);
 };
 
 Thermostat.prototype.decreaseTemperatureBy = function(degrees) {
-	if(this.temperature - this.minTemperature < degrees) this.temperature = this.minTemperature;
-	else this.temperature -= degrees
+	if(this.temperature - this.minTemperature < degrees) return this.temperature = this.minTemperature;
+	else return this.temperature -= degrees
 };
 
 Thermostat.prototype.reset = function() {
-	this.temperature = this.resetDefault;
+	return this.temperature = this.resetDefault;
 };
