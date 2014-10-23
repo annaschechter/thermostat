@@ -5,6 +5,7 @@ describe('Thermostat', function() {
 	var thermostat;
 
 	beforeEach(function() {
+		// $('body').append('<h1>hello</h1>');
 		thermostat = new Thermostat();
 	});
 

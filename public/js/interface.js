@@ -1,8 +1,11 @@
-
-function ThermostatView(element) {
+var currentTemp;
+function ThermostatView(element, currentTemp) {
 	this.el = $(element);
 	this.thermostat = new Thermostat;
-	this.el.text(this.thermostat.temperature);
+	this.thermostat.temperature = currentTemp;
+	this.thermostat.temperature = 0;
+	// this.el.text(this.thermostat.temperature);
+	this.el.text(this.thermostat.increaseTemperatureBy(currentTemp));
 	this.bindTo('#increase', this.thermostat, this.thermostat.increaseTemperature); 
 	this.bindTo('#decrease', this.thermostat, this.thermostat.decreaseTemperature);
 	this.bindTo('#reset', this.thermostat, this.thermostat.reset);
@@ -27,8 +30,15 @@ ThermostatView.prototype.attachTo = function(selector, object, func) {
 };
 
 $(document).ready(function() {
-	new ThermostatView('#number');
+
+	// $.getJSON('/weather', function(data){console.log(data['list'][1]['main']['temp'])})
+	$.getJSON('/weather', function(data){
+		var currentTemp = (data['list'][1]['main']['temp']);
+		new ThermostatView('#number', currentTemp);
+	});
+	
 });
+
 
 
 
