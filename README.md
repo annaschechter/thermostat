@@ -1,8 +1,8 @@
 Thermostat
-==========
-
-Specification:
-
+======================
+Thermostat is one of the week six project at Makers Academy. In this week we learnt JavaScript, jQuery and working with APIs.
+Specification
+-------------
 - Thermostat starts at 20 degrees
 - You can increase the temp with the up button
 - You can decrease the temp with the down button
@@ -16,3 +16,27 @@ Specification:
   - < 18 is green,
   - < 25 is yellow,
   - otherwise red
+
+Languages and Tools
+-------------------
+* JavaScript
+* jQuery
+* API
+* HTML
+* CSS
+
+How to use
+----------
+Clone the repository:
+```
+$ git clone git@github.com:annaschechter/thermostat.git
+```
+Run SpecRunner.html to see the tests:
+```
+$ open SpecRunner.html
+```
+Rackup to start the server:
+```
+$ rackup
+```
+In your browser visit http://localhost:9292/

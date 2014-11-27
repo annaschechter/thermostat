@@ -30,10 +30,8 @@ ThermostatView.prototype.attachTo = function(selector, object, func) {
 };
 
 $(document).ready(function() {
-
-	// $.getJSON('/weather', function(data){console.log(data['list'][1]['main']['temp'])})
 	$.getJSON('/weather', function(data){
-		var currentTemp = (data['list'][1]['main']['temp']);
+		var currentTemp = parseInt(data['list'][1]['main']['temp']);
 		new ThermostatView('#number', currentTemp);
 	});
 	

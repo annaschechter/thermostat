@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)file:///Users/annajerofejeva/Desktop/projects/github-profile/github.html# -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">	
+	</head>
+	<body> 
+		<main>
+		<section>
+			<input type="text" id="prof_name" placeholder="Enter github profile username">
+			<a href="./github_files/github.html" id="fetch">fetch</a>
+		</section>
+		<article>
+			<img src="./github_files/8522719">
+			<h1>Name: Anna Jerofejeva</h1>
+			<h2>User name: annaschechter</h2>
+			<p id="followers">15 followers</p>
+			<p id="repos">19 public repositories</p> 
+		</article>
+		</main>
+			<script type="text/javascript" src="./github_files/jquery.js"></script>
+			<script type="text/javascript" src="./github_files/handlebars.js"></script>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					var userName;
+					$('#fetch').on('click', function() {
+						userName = $('#prof_name').val(); 
+						$.get('https://api.github.com/users/' + userName, function(data) {
+							$('img').attr('src', data['avatar_url']);
+							$('h1').text("Name: " + data['name']);
+							$('h2').text("User name: " + data['login']);
+							$('#followers').text(data['followers'] + " followers");
+							$('#repos').text(data['public_repos'] + " public repositories");
+						});
+					});
+				});
+			</script>
+	
+</body></html>
