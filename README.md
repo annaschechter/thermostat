@@ -20,6 +20,8 @@ Specification
 Languages and Tools
 -------------------
 * JavaScript
+* Jasmine
+* Sinatra
 * jQuery
 * API
 * HTML
@@ -31,7 +33,7 @@ Clone the repository:
 ```
 $ git clone git@github.com:annaschechter/thermostat.git
 ```
-Run SpecRunner.html to see the tests:
+Run Jasmine to see the tests:
 ```
 $ open SpecRunner.html
 ```
