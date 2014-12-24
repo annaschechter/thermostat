@@ -3,7 +3,7 @@ Thermostat
 Thermostat is one of the week six project at Makers Academy. In this week we learnt JavaScript, jQuery and working with APIs.
 Specification
 -------------
-- Thermostat starts at 20 degrees
+- Thermostat starts at current London temperature (retrieved from openweathermap API)
 - You can increase the temp with the up button
 - You can decrease the temp with the down button
 - The minimum temperature is 10 degrees
@@ -17,6 +17,7 @@ Specification
   - < 25 is yellow,
   - otherwise red
 
+<img src="https://s3-eu-west-1.amazonaws.com/annas-first-test-bucket/thermostat.png">
 Languages and Tools
 -------------------
 * JavaScript
